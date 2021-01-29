@@ -2,7 +2,7 @@
 #include<stdio.h>
 void main()
 {
-  float d,h,b,volume,a;
+  float d,h,b,volume;
   printf("Enter d: \n");
   scanf("%f",&d);
   printf("Enter h: \n");
