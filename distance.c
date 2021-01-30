@@ -22,8 +22,8 @@ int main()
 {
 	float x1,x2,y1,y2,dist;
 	x1=input('x',1);
-	x2=input('x',2);
 	y1=input('y',1);
+	x2=input('x',2);
 	y2=input('y',2);
 	dist=distance(x1,y1,x2,y2);
 	output(x1,y1,x2,y2,dist);
