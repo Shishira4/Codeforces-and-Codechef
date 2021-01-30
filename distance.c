@@ -2,10 +2,13 @@
 
 #include<stdio.h>
 #include<math.h>
-float input()  
+float input(char b, int i);  
+float distance(float x1, float x2, float y1, float y2); 
+void output(float x1, float x2, float y1, float y2, float dist); 
+float input(char b, int i)  
 {
 	float c;
-	printf("Enter the coordinate of point: ");
+	printf("Enter the coordinate %c of point %i: ",b,i);
 	scanf("%f",&c);
 }
 float distance(float x1, float x2, float y1, float y2)  
@@ -21,11 +24,12 @@ void output(float x1, float x2, float y1, float y2, float dist)
 int main()  
 {
 	float x1,x2,y1,y2,dist;
-	x1=input();
-	x2=input();
-	y1=input();
-	y2=input();
+	x1=input('x',1);
+	x2=input('x',2);
+	y1=input('y',1);
+	y2=input('y',2);
 	dist=distance(x1,x2,y1,y2);
 	output(x1,x2,y1,y2,dist);
 	return 0;
 }
+
