@@ -26,25 +26,25 @@ int main()
 int gcd(int n, int d, Fract f1, Fract f2)
 {
     
-    int temp, ans_n, ans_d;
-    ans_n = n;
-    ans_d = d;
+    int temp;
+  
     while(n!=0)
     {
         temp = n;
         n = d%n;
         d = temp;
     }
-    ans_n = ans_n/d;
-    ans_d = ans_d/d;
-    printf("The sum of the fractions %d/%d and %d/%d is %d/%d",f1.n,f1.d,f2.n,f2.d,ans_n,ans_d);
+return d;
 }
 int compute_sum(Fract f1,Fract f2)
 {
     
-    int num,den;
+    int num,den, ans_n, ans_d;
     num = ((f1.n* f2.d) + (f2.n * f1.d));
     den = (f1.d * f2.d);
     int g = gcd(num,den,f1,f2);
-    
+    ans_n = num/g;
+    ans_d = den/g;
+   printf("The sum of the fractions %d/%d and %d/%d is %d/%d",f1.n,f1.d,f2.n,f2.d,ans_n,ans_d);
 }
+
