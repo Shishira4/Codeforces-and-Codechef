@@ -46,17 +46,23 @@ Fract input(){
   return fraction;
 }
 
-int gcd(int p, int q){
-  int a;
-  for(int i = 1; i <= p && i <= q; i++)
+
+int gcd(int n, int d)
+{
+    
+    int temp;
+  
+    while(n!=0)
     {
-        if(p % i == 0 && q % i == 0)
-            a = i;
+        temp = n;
+        n = d%n;
+        d = temp;
     }
-    return a;
+return d;
 }
 
-Fract sum(Fract f1, Fract f2){
+Fract sum(Fract f1, Fract f2)
+{
   Fract f3;
   int c;
   f3.n = ((f1.n*f2.d)+(f2.n*f1.d));
@@ -67,7 +73,9 @@ Fract sum(Fract f1, Fract f2){
   return f3;
 }
 
-int result(Fract s){
+int result(Fract s)
+{
   printf("The sum of the given fractions : %d / %d\n",s.n,s.d);
   return 0;
 }
+
