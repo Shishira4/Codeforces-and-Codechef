@@ -1,5 +1,4 @@
 #include<stdio.h>
-int compute_sum();
 struct fract
     {
         int n;
@@ -7,6 +6,8 @@ struct fract
      
     };
     typedef struct fract Fract;
+Fract compute_sum();
+void output(Fract f1, Fract f2, Fract s);
 Fract input()
 {
     Fract x;
@@ -20,7 +21,8 @@ int main()
     Fract f1,f2;
     f1 = input();
     f2 = input();
-    int d = compute_sum(f1,f2);
+    Fract d = compute_sum(f1,f2);
+    output(f1,f2,d);
 
 }
 int gcd(int n, int d, Fract f1, Fract f2)
@@ -36,15 +38,18 @@ int gcd(int n, int d, Fract f1, Fract f2)
     }
 return d;
 }
-int compute_sum(Fract f1,Fract f2)
+Fract compute_sum(Fract f1,Fract f2)
 {
-    
-    int num,den, ans_n, ans_d;
+    Fract s;
+    int num,den;
     num = ((f1.n* f2.d) + (f2.n * f1.d));
     den = (f1.d * f2.d);
     int g = gcd(num,den,f1,f2);
-    ans_n = num/g;
-    ans_d = den/g;
-   printf("The sum of the fractions %d/%d and %d/%d is %d/%d",f1.n,f1.d,f2.n,f2.d,ans_n,ans_d);
+    s.n = num/g;
+    s.d = den/g;
+    return s;
 }
-
+void output(Fract f1, Fract f2, Fract s)
+{
+    printf("The sum of %d/%d and %d/%d is %d/%d", f1.n,f1.d,f2.n,f2.d,s.n,s.d);
+}
