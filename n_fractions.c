@@ -1,81 +1,107 @@
-//WAP to find the sum of n fractions.
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
-struct fract{
+struct fract
+{
   int n;
   int d;
 };
 typedef struct fract Fract;
-Fract input();
-Fract sum(Fract f1, Fract f2);
-int gcd(int p, int q);
-int  result(Fract s);
 
 
-int main(){
-  int n;
-  printf("Enter the no. of terms: ");
-  scanf("%d",&n);
-  Fract x,y,a[n];
-  for(int i=0;i<n;i++){
-    printf("Enter fraction %d\n",i+1);
-    a[i] = input();
-  }
-  if(n==1){
-    y =a[0];
-  }
-  else{
-    x = a[0];
-    for(int i=0;i<n-1;i++){
-      y = sum(x,a[i+1]);
-      x = y;
-    }
-  }
-  result(x);
-  return 0;
-}
 
-Fract input(){
-  Fract fraction;
-  printf("Enter the numerator");
-  scanf("%d",&fraction.n);
-  printf("Enter the denominator");
-  scanf("%d",&fraction.d);
-  return fraction;
-}
-
-
-int gcd(int n, int d)
+int input_no()
 {
+    int n;
+    printf ("Enter the no. of terms: \n");
+    scanf ("%d", &n);
+    return n;
+}
+void input (Fract *x)
+{
+    printf ("Enter the numerator: \n");
+    scanf ("%d", &x->n);
+    printf ("Enter the denominator: \n");
+    scanf ("%d", &x->d);
+}
+Fract input_n(int n, Fract *arr)
+{
+    for (int i = 0; i < n; i++)
+   {
+      printf ("Enter fraction \n");
+
+      input(&arr[i]);
+  }
     
-    int temp;
-  
-    while(n!=0)
+}
+
+
+
+int gcd (int n, int d)
+{
+  int temp;
+
+  while (n != 0)
     {
-        temp = n;
-        n = d%n;
-        d = temp;
+      temp = n;
+      n = d % n;
+      d = temp;
     }
-return d;
+  return d;
 }
 
-Fract sum(Fract f1, Fract f2)
+Fract compute_sum (Fract y,Fract x)
 {
-  Fract f3;
-  int c;
-  f3.n = ((f1.n*f2.d)+(f2.n*f1.d));
-  f3.d = f1.d*f2.d;
-  c = gcd(f3.n,f3.d);
-  f3.n = f3.n/c;
-  f3.d = f3.d/c;
-  return f3;
+    Fract sum;
+    int c;
+    
+    sum.n = ((y.n * x.d) + (x.n * y.d));
+    sum.d = y.d * x.d;
+    c = gcd (sum.n, sum.d);
+    
+    sum.n = sum.n / c;
+    sum.d = sum.d / c;
+    printf("%d",c);
+    return sum;
 }
 
-int result(Fract s)
+Fract compute_n_sum(int n, Fract arr[n])
 {
-  printf("The sum of the given fractions : %d / %d\n",s.n,s.d);
-  return 0;
+    Fract y;
+    y.n=arr[0].n;
+    y.d = arr[0].d;
+    for(int i=0;i<n-1;i++)
+    {
+       y = compute_sum(y,arr[i+1]);
+    }
+    printf("after %d %d\n",y.n, y.d);
+    return y;
 }
+
+void result_n(Fract x, int n, Fract arr[n])
+{
+    printf(" Sum of %d/%d",arr[0].n,arr[0].d);
+    for(int i=1;i<n;i++)
+    {
+        printf("+%d/%d ",arr[i].n,arr[i].d);
+        
+}
+    printf("=%d/%d\n", x.n, x.d);
+}
+
+int main ()
+{
+    int n;
+    Fract x;
+    n = input_no();
+    Fract arr[n];
+    input_n(n,&arr[0]);
+    x = compute_n_sum(n,arr);
+    result_n(x,n,arr);
+    
+    return 0;
+}
+
+
 
