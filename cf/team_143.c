@@ -8,8 +8,7 @@ int main()
     scanf("%d",&t);
     for(int i=0;i<t;i++)
     {
-        sum=0;
-        
+        sum=0;        
         for(int j=0;j<3;j++)
         {
             scanf("%d",&a[j]);
@@ -18,10 +17,8 @@ int main()
         if(sum>=2)
         {
             count ++;
-        }                        
-        
+        }                                
     }
-    printf("%d",count);
-    
+    printf("%d",count);    
     return 0;
 }
