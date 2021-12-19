@@ -3,13 +3,16 @@
 using namespace std;
 void logic(long long friends)
 {
+    long long slices;
     if(friends<6)
     {
-        cout << 15;
+        slices = 15;
+        cout << slices << "\n";
     }
     else
     {
-        cout << (friends * 5/2) << "\n";
+        slices = friends * 5/2;
+        cout << slices << "\n";
     }
 
 }
