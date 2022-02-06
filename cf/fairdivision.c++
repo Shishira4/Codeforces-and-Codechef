@@ -4,7 +4,7 @@
 using namespace std;
 void logic()
 {
-    int candies, total_weight=0, number_of_ones=0, number_of_twos=0,remaining_ones, remaining_twos, weight_left;
+    int candies, total_weight=0, number_of_ones=0, number_of_twos=0,remaining_ones, remaining_twos;
     cin >> candies;
     vector<int> weight(candies);
     int alice, bob;
