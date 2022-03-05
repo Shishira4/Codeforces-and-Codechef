@@ -1,4 +1,5 @@
 //https://www.codechef.com/COOK139D/problems/JASSIGNMENTS
+//solution link - https://www.codechef.com/viewsolution/59726087
 #include<iostream>
 using namespace std;
 void logic()
@@ -7,11 +8,11 @@ void logic()
     cin >> time;
     if((time+3) <=10)
     {
-        cout << "Yes";
+        cout << "Yes" << "\n";
     }
     else
     {
-        cout << "No";
+        cout << "No" << "\n";
     }
 }
 int main()
